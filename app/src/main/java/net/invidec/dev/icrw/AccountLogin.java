@@ -46,7 +46,7 @@ public class AccountLogin extends AppCompatActivity {
 
         textViewMessage.setText("Wird eingeloggt...");
 
-        requestLogin();
+        //requestLogin();
     }
 
     public void gotoDashboard() {
@@ -109,7 +109,7 @@ public class AccountLogin extends AppCompatActivity {
         addToRequestQueue(jsonObjectRequest);
     }**/
 
-    public void requestLogin () {
+    /**public void requestLogin () {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://invidec.net/codiad/workspace/icrwallet/api.php";
 
@@ -155,6 +155,6 @@ public class AccountLogin extends AppCompatActivity {
                 return params;
             }};
         queue.add(stringRequest);
-    }
+    }**/
 
 }

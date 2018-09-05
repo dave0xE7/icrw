@@ -6,85 +6,175 @@
     android:layout_height="match_parent"
     tools:context=".WalletDashboard">
 
-    <LinearLayout
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:elevation="4dp"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:layout_constraintHeight_min="46dp"
+        app:titleTextColor="@color/white" />
 
-        <TextView
-            android:id="@+id/textViewHeading"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TableRow
+            android:id="@+id/trHeading"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dashboard"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewBalance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="93dp" />
+            <TextView
+                android:id="@+id/textViewHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/wallet_dashboard"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/buttonBalance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickBalance"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/buttonReceive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="gotoReceive"
-            android:text="Empfangen"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="300dp" />
-
-        <Button
-            android:id="@+id/buttonSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="gotoSend"
-            android:text="Senden"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="250dp" />
-
-        <TextView
-            android:id="@+id/textViewCharts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-
-        <LinearLayout
+        <TableRow
+            android:id="@+id/trWalletInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewAccName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/wallet_address"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textViewIcrAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="CopyAddress"
+                    android:text="@string/dummy_address"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:typeface="normal"
+                    app:fontFamily="monospace" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trBalance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewBalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dummy_icr_balance"
+                    android:textAllCaps="false"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    tools:layout_editor_absoluteX="88dp"
+                    tools:layout_editor_absoluteY="93dp" />
+
+                <TextView
+                    android:id="@+id/textViewBalance2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dummy_eur_balance"
+                    android:textSize="24sp"
+                    tools:layout_editor_absoluteX="88dp"
+                    tools:layout_editor_absoluteY="93dp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trActions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buttonVal1"
-                android:layout_width="wrap_content"
+                android:id="@+id/buttonSend"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="BTC->EUR" />
+                android:onClick="gotoSend"
+                android:text="@string/buttonSend" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buttonVal2"
-                android:layout_width="wrap_content"
+                android:id="@+id/buttonReceive"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ICR->BTC" />
+                android:onClick="gotoReceive"
+                android:text="@string/buttonReceive" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buttonVal3"
-                android:layout_width="wrap_content"
+                android:id="@+id/buttonTransactions"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ICR->EUR" />
-        </LinearLayout>
+                android:onClick="gotoTransactions"
+                android:text="@string/buttonTransaction" />
+        </TableRow>
 
-    </LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewCharts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:textSize="24sp" />
+
+        </TableRow>
+
+    </TableLayout>
 
 
 </android.support.constraint.ConstraintLayout>

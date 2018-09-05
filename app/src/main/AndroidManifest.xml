@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.invidec.dev.icrw">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,14 +20,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
         <activity android:name=".WalletDashboard" />
         <activity android:name=".AccountRegister" />
         <activity android:name=".AccountLogin" />
         <activity android:name=".WalletSend" />
-        <activity android:name=".WalletReceive"></activity>
-    </application>
+        <activity android:name=".WalletReceive" />
+        <activity android:name=".WalletTransactions" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+        <receiver android:name=".InterCroneWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/inter_crone_widget_info" />
+        </receiver>
+    </application>
 
 </manifest>

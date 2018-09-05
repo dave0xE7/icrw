@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".WalletSend">
 
     <LinearLayout
@@ -15,16 +16,47 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Senden"/>
+            android:text="@string/buttonSend"
+            android:textSize="30sp" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="31dp" />
+
+        <TextView
+            android:id="@+id/textViewHave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelBalanceAvailable"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewBal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_icr_balance"
+            android:textSize="24sp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Empfänger Adresse" />
+            android:text="Empfänger Adresse"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextSendAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -34,19 +66,44 @@
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Betrag" />
+            android:text="Betrag"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextSendAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal" />
 
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/textViewSendLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Label"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextSendLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailSubject" />
+
+        <CheckBox
+            android:id="@+id/checkBoxVerification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:enabled="true"
+            android:text="@string/sendCheckBox"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickSend"
             android:text="Senden"
             android:textSize="14sp" />
 
@@ -54,12 +111,12 @@
             android:id="@+id/textViewError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="" />
 
         <TextView
             android:id="@+id/textViewMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

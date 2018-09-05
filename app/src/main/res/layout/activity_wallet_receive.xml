@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".WalletReceive">
 
     <LinearLayout
@@ -15,20 +16,41 @@
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Empfangen"
+            android:layout_marginBottom="20dp"
+            android:text="@string/buttonReceive"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Senden an Adresse" />
+            android:text="@string/wallet_address"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:shadowColor="@color/colorAccent"
+            android:text="@string/dummy_address"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonClipboardCopy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="CopyAddress"
+            android:text="@string/buttonClipboardCopy" />
+
+        <WebView
+            android:id="@+id/qrcodeimage"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@color/white" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

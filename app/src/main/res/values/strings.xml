@@ -1,6 +1,29 @@
 <resources>
     <string name="app_name">InterCrone Wallet</string>
-    <string name="preference_file_key">net.invidec.dev.icrw.preference_file_key</string>
-    <string name="saved_userid_key">none</string>
-    <string name="saved_token_key">none</string>
+    <string name="apiUrl">http://195.201.178.220/icrw-server/api.php</string>
+    <string name="preference_file_key">net.invidec.dev.icrw.preferences</string>
+    <string name="accountId">userid</string>
+    <string name="accountKey">token</string>
+    <string name="connection_error">Verbindung Fehlgeschlagen!</string>
+    <string name="sav">none</string>
+    <string name="buttonReceive">Empfangen</string>
+    <string name="buttonSend">Senden</string>
+    <string name="buttonTransaction">Transaktionen</string>
+    <string name="title_activity_tab_test">TabTest</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="wallet_dashboard">Dashboard</string>
+    <string name="wallet_address">Wallet Adresse</string>
+    <string name="dummy_address">dummy Address</string>
+    <string name="dummy_icr_balance">0.00 ICR</string>
+    <string name="dummy_eur_balance">0.00 EUR</string>
+    <string name="labelBalanceAvailable">Verfügbar</string>
+    <string name="sendCheckBox">Bestätigung</string>
+    <string name="buttonClipboardCopy">Copy to Clipboard</string>
+    <string name="appwidget_text">InterCrone</string>
+    <string name="add_widget">Add widget</string>
+    <string name="actionTitleSetting">Einstellungen</string>
+    <string name="actionTitleBackup">Backup</string>
+    <string name="actionTitleAbout">Mehr Infos</string>
+    <string name="actionTitleUpdate">Sync</string>
 </resources>

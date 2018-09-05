@@ -4,48 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".MainActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonLogin"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="gotoLogin"
-            android:text="Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Login" />
-
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="gotoRegistration"
-            android:text="Register"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="300dp"
-            tools:text="Register" />
+            android:layout_height="74dp" />
 
         <TextView
-            android:id="@+id/textViewMessage"
+            android:id="@+id/tvLabelNewAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="18sp" />
+            android:text="InterCrone Wallet"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewError"
+            android:id="@+id/tvLabelNewAccount2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="18sp" />
+            android:text="für Android-Mobilgeräte"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="74dp" />
+
+        <TextView
+            android:id="@+id/tvLabelNewAccountName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of the new Account"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/accountname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Account Name"
+            android:inputType="text"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/create_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Account" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="84dp" />
+
+        <TextView
+            android:id="@+id/tvLabelImportAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Or Import an existing Account" />
+
+        <TextView
+            android:id="@+id/tvLabelImportAcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Account"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/tvLabelImportKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Key"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/accountkey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Key"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/import_account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Import" />
     </LinearLayout>
 
 
