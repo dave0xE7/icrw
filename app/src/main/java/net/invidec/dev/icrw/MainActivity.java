@@ -6,41 +6,27 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.CountDownTimer;
-import android.os.StrictMode;
-import android.provider.Settings;
-import android.provider.SyncStateContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
             WalletDashboard.account=savedaccount;
             WalletDashboard.accountkey=savedaccountkey;
             startActivity(new Intent(MainActivity.this, WalletDashboard.class));
-            finish();
+            //finish();
         }
 
-        accountname = findViewById(R.id.accountname);
-        account = findViewById(R.id.account);
-        accountkey = findViewById(R.id.accountkey);
+        etAccountname = findViewById(R.id.accountname);
+        etAccount = findViewById(R.id.account);
+        etAccountkey = findViewById(R.id.accountkey);
 
         create_account_button = findViewById(R.id.create_account_button);
         create_account_button.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    EditText accountname, account, accountkey;
+    EditText etAccountname, etAccount, etAccountkey;
     Button create_account_button, import_account_button;
 
     SharedPreferences sharedPreferences;
@@ -133,8 +119,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    /**
-    @Override
+    /**@Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case READ_PHONE_STATE_REQUEST_CODE: {
@@ -147,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
-    }
-    **/
+    }**/
+
     /**
     protected String getDeviceIMEI() {
         String deviceUniqueIdentifier = null;
@@ -182,12 +167,17 @@ public class MainActivity extends AppCompatActivity {
                     final JSONObject response = new JSONObject(req);
                     final JSONObject result = response.getJSONObject("result");
 
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("account", result.getString("account"));
-                        editor.putString("accountkey", result.getString("key"));
-                        editor.apply();
+                        String account = result.getString("account");
+                        String accountkey = result.getString("key");
 
-                        gotoDashboard();
+                        if (!account.isEmpty() && !accountkey.isEmpty()) {
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("account", account);
+                            editor.putString("accountkey", accountkey);
+                            editor.apply();
+
+                            gotoDashboard();
+                        }
 
                         /**new Thread(new Runnable() {
                             @Override

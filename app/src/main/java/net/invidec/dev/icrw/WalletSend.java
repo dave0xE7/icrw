@@ -1,6 +1,8 @@
 package net.invidec.dev.icrw;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -84,18 +87,30 @@ public class WalletSend extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Response ", response.toString());
-                        show_alert("sent");
+                        Log.d("send Response ", response.toString());
                         try {
                             JSONObject jsondata = new JSONObject(response.toString());
                             JSONObject result = jsondata.getJSONObject("result");
-                            //String userid  = user.getString("userid");
+                            Boolean okStatus  = result.getBoolean("ok");
 
-                            String txid = result.getString("txid");
+                            //String txid = result.getString("txid");
+                            if (okStatus) {
+
+                                Toast.makeText(getApplicationContext(), "Transaction Successful!", Toast.LENGTH_SHORT).show();
+                                //show_alert("Transaction Sucessful!");
+                                sendAddress.setText("");
+                                sendAmount.setText("");
+                                sendLabel.setText("");
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Transaction Failed!", Toast.LENGTH_SHORT).show();
+
+                            }
+
 
                         } catch (Exception e) {
                             Log.d("Exception ", e.toString());
                         }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -117,6 +132,11 @@ public class WalletSend extends AppCompatActivity {
                 return params;
             }};
         requestQueue.add(stringRequest);
+    }
+
+    public void gotoDashboard () {
+        Intent intent = new Intent(this, WalletDashboard.class);
+        startActivity(intent);
     }
 
 

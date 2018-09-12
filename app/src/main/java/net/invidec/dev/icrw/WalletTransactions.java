@@ -45,8 +45,8 @@ public class WalletTransactions extends AppCompatActivity {
         Date date = new Date(Long.parseLong(unixtime)*1000L);
         // format of the date
         //SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-        SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd");
-        jdf.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+        SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        jdf.setTimeZone(TimeZone.getTimeZone("GMT+1"));
         String java_date = jdf.format(date);
         return java_date;
     }
@@ -84,7 +84,7 @@ public class WalletTransactions extends AppCompatActivity {
 
                                 String itemAmount= item.getString("amount");
                                 String confirmations="10";
-                                list = list +""+FormatTime(itemTime)+" "+itemAmount+" ICR\n"+itemAddress+"\n"+confirmations+" Confirmations \n\n";
+                                list = list +"["+FormatTime(itemTime)+"] "+itemAmount+" ICR\n"+itemAddress+"\n"+confirmations+" Confirmations \n\n";
                             }
 
                             textViewListTransactions.setText(list);

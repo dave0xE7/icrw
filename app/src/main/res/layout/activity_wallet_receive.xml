@@ -10,18 +10,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/tvLabelReceive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="@string/buttonReceive"
+            android:text="Empfangen"
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tvLabelAccountAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wallet_address"
@@ -29,7 +31,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textViewAddress"
+            android:id="@+id/tvAccountAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:shadowColor="@color/colorAccent"
@@ -44,6 +46,19 @@
             android:layout_marginTop="20dp"
             android:onClick="CopyAddress"
             android:text="@string/buttonClipboardCopy" />
+
+        <Button
+            android:id="@+id/buttonShareToApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="buttonShareToApp"
+            android:text="@string/buttonShareToApp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" />
 
         <WebView
             android:id="@+id/qrcodeimage"

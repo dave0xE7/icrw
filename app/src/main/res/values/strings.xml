@@ -26,4 +26,16 @@
     <string name="actionTitleBackup">Backup</string>
     <string name="actionTitleAbout">Mehr Infos</string>
     <string name="actionTitleUpdate">Sync</string>
+    <string name="title_activity_about_scroll">About this App</string>
+    <string name="large_text">
+        "What is Intercrone?\n\n"
+
+        "http://www.intercrone.com/\n\n"
+
+        "Spenden Adresse\n\n"
+        "EWMS5grFzw9dnFACQH2CKBoeSSkMxQWeCS\n\n"
+
+    </string>
+    <string name="buttonShareToApp">Share Address</string>
+    <string name="sendTo">ICR Address</string>
 </resources>

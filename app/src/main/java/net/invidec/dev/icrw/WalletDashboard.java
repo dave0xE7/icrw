@@ -69,7 +69,7 @@ public class WalletDashboard extends AppCompatActivity {
 
     public void UpdateValues () {
         icreur = (btceur * btcicr);
-        textViewCharts.setText("1 BTC = "+btceur.toString()+" EUR\n1 ICR = "+String.format("%.6f", btcicr)+" BTC\n1 ICR = "+icreur+" EUR");
+        textViewCharts.setText("1 BTC = "+btceur.toString()+" EUR\n1 ICR = "+String.format("%.6f", btcicr)+" BTC\n1 ICR = "+String.format("%.6f", icreur)+" EUR");
         balanceIcr = Double.parseDouble(balance);
         balanceEur = balanceIcr*icreur;
         balanceBtc = balanceIcr*btcicr;
@@ -204,13 +204,13 @@ public class WalletDashboard extends AppCompatActivity {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.action_sync:
-                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(this, "Sync Balance", Toast.LENGTH_SHORT).show();
+                GetBalance();
                 break;
             // action with ID action_settings was selected
             case R.id.action_settings:
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
-                        .show();
+                //Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+                gotoAbout();
                 break;
             default:
                 break;
@@ -289,6 +289,10 @@ public class WalletDashboard extends AppCompatActivity {
     }
     public void gotoTransactions (View view) {
         Intent intent = new Intent(this, WalletTransactions.class);
+        startActivity(intent);
+    }
+    public void gotoAbout () {
+        Intent intent = new Intent(this, AboutScrollActivity.class);
         startActivity(intent);
     }
 }
