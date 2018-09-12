@@ -12,8 +12,14 @@
         android:id="@+id/action_settings"
         android:icon="@android:drawable/ic_menu_preferences"
         android:orderInCategory="200"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:title="Settings"/>
+    <item
+        android:id="@+id/action_export"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="201"
+        app:showAsAction="never"
+        android:title="Export"/>
 
 
 </menu>

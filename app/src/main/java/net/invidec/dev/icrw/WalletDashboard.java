@@ -27,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -212,6 +213,10 @@ public class WalletDashboard extends AppCompatActivity {
                 //Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
                 gotoAbout();
                 break;
+            case R.id.action_export:
+                Toast.makeText(this, "Exporting", Toast.LENGTH_SHORT).show();
+                ExportAccount();
+                break;
             default:
                 break;
         }
@@ -294,5 +299,20 @@ public class WalletDashboard extends AppCompatActivity {
     public void gotoAbout () {
         Intent intent = new Intent(this, AboutScrollActivity.class);
         startActivity(intent);
+    }
+    // TODO: IMPORT AND EXPORT
+    public void ExportAccount () {
+        String filename = "account_backup";
+        String fileContents = account+":"+accountkey;
+        FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(fileContents.getBytes());
+            outputStream.close();
+            Log.d("Export File Path: ",getFilesDir().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

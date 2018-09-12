@@ -1,18 +1,22 @@
 package net.invidec.dev.icrw;
 
-import android.content.Context;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,6 +35,8 @@ import static net.invidec.dev.icrw.WalletDashboard.accountkey;
 
 public class WalletSend extends AppCompatActivity {
 
+    private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +52,41 @@ public class WalletSend extends AppCompatActivity {
         checkBoxVerify = findViewById(R.id.checkBoxVerification);
         checkBoxVerify.setVisibility(View.INVISIBLE);
 
-
+        button = (Button) this.findViewById(R.id.buttonScanQrCode);
+        final Activity activity = this;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(activity);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("Scan");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Log.d("MainActivity", "Cancelled scan");
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("MainActivity", "Scanned");
+                String scanResult = result.getContents();
+                Toast.makeText(this, "Scanned: " + scanResult, Toast.LENGTH_LONG).show();
+                sendAddress.setText(scanResult);
+            }
+        } else {
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
 
     public void onClickSend (View view) {
         Float inputAmount = Float.parseFloat(sendAmount.getText().toString());
@@ -144,4 +183,8 @@ public class WalletSend extends AppCompatActivity {
     Button buttonSend;
     EditText sendAddress, sendAmount, sendLabel;
     CheckBox checkBoxVerify;
+
+
+    // TODO: Add QR Code Scanner
+
 }

@@ -55,12 +55,30 @@
             android:text="Empfänger Adresse"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editTextSendAddress"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextSendAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonScanQrCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:drawable/divider_horizontal_dark"
+                android:text="SCAN QR"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                tools:layout_editor_absoluteX="269dp"
+                tools:layout_editor_absoluteY="174dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView11"
@@ -119,4 +137,5 @@
             android:layout_height="wrap_content"
             android:text="" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
